@@ -10,7 +10,7 @@ http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url"
-			value="jdbc:postgresql://localhost:5432/formationspring" />
+			value="jdbc:postgresql://localhost:5432/customers" />
 		<property name="username" value="postgres" />
 		<property name="password" value="postgres" /> <!-- "postgres" ou "root" ou ... -->
 	</bean>

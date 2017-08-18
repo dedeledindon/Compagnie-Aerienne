@@ -6,7 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.sopra.resa.model.Client;
+import com.sopra.resa.model.Clientspring;
 import com.sopra.resa.service.ServiceClient;
 
 public class ResaTestV1 {
@@ -23,7 +23,7 @@ public class ResaTestV1 {
 
 	@Test
 	public void testRechercherClient() {
-		Client c = serviceClient.rechercherClient(1L);
+		Clientspring c = serviceClient.rechercherClient(1L);
 		Assert.assertTrue(c.getIdClient() == 1L);
 		System.out.println(c);
 	}

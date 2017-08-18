@@ -2,8 +2,8 @@ package com.sopra.resa.service;
 
 import java.util.List;
 
-import com.sopra.resa.model.Client;
-import com.sopra.resa.model.Login;
+import com.sopra.resa.model.Clientspring;
+import com.sopra.resa.model.LoginSpring;
 
 /**
  * 
@@ -16,16 +16,16 @@ import com.sopra.resa.model.Login;
  */
 
 public interface ServiceClient {
-	public Client rechercherClient(Long id);
+	public Clientspring rechercherClient(Long id);
 
-	public void majClient(Client client); // mettre à jour client
+	public void majClient(Clientspring client); // mettre à jour client
 
-	public List<Client> findClientByName(String nom);
+	public List<Clientspring> findClientByName(String nom);
 
 	// ...
-	public Client insertClientWithLogin(Client cli, Login login);
+	public Clientspring insertClientWithLogin(Clientspring cli, LoginSpring login);
 
 	public void supprimerClientWithLogin(Long idClient);
 
-	public Client rechercherClientAvecResa(Long id);
+	public Clientspring rechercherClientAvecResa(Long id);
 }

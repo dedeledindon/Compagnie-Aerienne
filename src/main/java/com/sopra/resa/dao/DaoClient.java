@@ -2,7 +2,7 @@ package com.sopra.resa.dao;
 
 import java.util.List;
 
-import com.sopra.resa.model.Client;
+import com.sopra.resa.model.Clientspring;
 
 /*
  * DaoClient = Data Access Object
@@ -10,8 +10,8 @@ import com.sopra.resa.model.Client;
  *   avec methodes CRUD
  *   et throws RuntimeException implicites
  */
-public interface DaoClient extends DaoGeneric<Client,Long>{
+public interface DaoClient extends DaoGeneric<Clientspring,Long>{
     
-    public List<Client> findClientByName(String nom);
+    public List<Clientspring> findClientByName(String nom);
 	
 }    

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.sopra.resa.dao.DaoClient;
 import com.sopra.resa.dao.DaoLogin;
-import com.sopra.resa.model.Client;
-import com.sopra.resa.model.Login;
+import com.sopra.resa.model.Clientspring;
+import com.sopra.resa.model.LoginSpring;
 
 //@Component
 @Service // id par defaut = serviceClientImpl
@@ -49,7 +49,7 @@ public class ServiceClientImpl implements ServiceClient {
 	// à faire en TP : coder les méthodes en déléguant au dao:
 
 	@Override
-	public Client rechercherClient(Long id) {
+	public Clientspring rechercherClient(Long id) {
 		return daoClient.findByKey(id);
 	}
 
@@ -60,19 +60,19 @@ public class ServiceClientImpl implements ServiceClient {
 
 	@Override
 	// @Transactional
-	public Client rechercherClientAvecResa(Long id) {
-		Client client = daoClient.findByKey(id);
+	public Clientspring rechercherClientAvecResa(Long id) {
+		Clientspring client = daoClient.findByKey(id);
 		loadlazyCollection(client.getListeResa());
 		return client;
 	}
 
 	@Override
-	public Client insertClientWithLogin(Client cli, Login login) {
-		Client savedClient = null;
+	public Clientspring insertClientWithLogin(Clientspring cli, LoginSpring login) {
+		Clientspring savedClient = null;
 		try {
 			savedClient = daoClient.insert(cli);
 			login.setIdClient(savedClient.getIdClient());
-			Login savedLogin = daoLogin.insert(login);
+			LoginSpring savedLogin = daoLogin.insert(login);
 			savedClient.setLogin(savedLogin);
 		} catch (Exception e) {
 			logger.error("echec insertClientWithLogin", e);
@@ -86,8 +86,8 @@ public class ServiceClientImpl implements ServiceClient {
 	// persistants
 	// avant de les retransmettre à daoXyz.delete()
 	public void supprimerClientWithLogin(Long idClient) {
-		Client client = daoClient.findByKey(idClient);
-		Login login = daoLogin.findByKey(idClient);
+		Clientspring client = daoClient.findByKey(idClient);
+		LoginSpring login = daoLogin.findByKey(idClient);
 		if (login != null)
 			daoLogin.delete(login);// ordre selon contrainte du schema
 		if (client != null)
@@ -95,12 +95,12 @@ public class ServiceClientImpl implements ServiceClient {
 	}
 
 	@Override
-	public void majClient(Client client) {
+	public void majClient(Clientspring client) {
 		daoClient.update(client);
 	}
 
 	@Override
-	public List<Client> findClientByName(String nom) {
+	public List<Clientspring> findClientByName(String nom) {
 		return daoClient.findClientByName(nom);
 	}
 

@@ -26,7 +26,7 @@ public class Resa {
 	
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="idClient")
-	private Client client;
+	private Clientspring client;
 	
 	
 
@@ -34,7 +34,7 @@ public class Resa {
 		super();
 	}
 
-	public Resa(Long idResa, String comment, Date dateResa, Client client) {
+	public Resa(Long idResa, String comment, Date dateResa, Clientspring client) {
 		super();
 		this.idResa = idResa;
 		this.comment = comment;
@@ -73,11 +73,11 @@ public class Resa {
 		this.dateResa = dateResa;
 	}
 
-	public Client getClient() {
+	public Clientspring getClient() {
 		return client;
 	}
 
-	public void setClient(Client client) {
+	public void setClient(Clientspring client) {
 		this.client = client;
 	}
 	

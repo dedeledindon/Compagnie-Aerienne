@@ -15,6 +15,10 @@ public class VilleAeroport {
 	@Column(name = "VERSION_VILLEAEROPORT")
 	private int version;
 
+	public VilleAeroport() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public VilleAeroport(VilleAeroportPk id) {
 		super();
 		this.id = id;
@@ -64,5 +68,4 @@ public class VilleAeroport {
 		return true;
 	}
 
-	
 }

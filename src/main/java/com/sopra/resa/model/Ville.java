@@ -93,17 +93,24 @@ public class Ville {
 		this.villeaeroports = villeaeroports;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#hashCode()
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
-		result = prime * result + version;
-		result = prime * result + ((villeaeroports == null) ? 0 : villeaeroports.hashCode());
 		return result;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -118,21 +125,7 @@ public class Ville {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (nom == null) {
-			if (other.nom != null)
-				return false;
-		} else if (!nom.equals(other.nom))
-			return false;
-		if (version != other.version)
-			return false;
-		if (villeaeroports == null) {
-			if (other.villeaeroports != null)
-				return false;
-		} else if (!villeaeroports.equals(other.villeaeroports))
-			return false;
 		return true;
 	}
-	
-	
 
 }

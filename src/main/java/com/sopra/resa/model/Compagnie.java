@@ -1,7 +1,5 @@
 package com.sopra.resa.model;
 
-
-
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -67,8 +65,6 @@ public class Compagnie {
 	public void setVersion(int version) {
 		this.version = version;
 	}
-	
-	
 
 	/**
 	 * @return the compagnieAerienneVols
@@ -78,7 +74,8 @@ public class Compagnie {
 	}
 
 	/**
-	 * @param compagnieAerienneVols the compagnieAerienneVols to set
+	 * @param compagnieAerienneVols
+	 *            the compagnieAerienneVols to set
 	 */
 	public void setCompagnieAerienneVols(Set<CompagnieVol> compagnieAerienneVols) {
 		this.compagnieAerienneVols = compagnieAerienneVols;

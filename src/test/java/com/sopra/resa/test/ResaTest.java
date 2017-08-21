@@ -1,7 +1,5 @@
 package com.sopra.resa.test;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.sopra.resa.model.Clientspring;
-import com.sopra.resa.model.LoginSpring;
-import com.sopra.resa.model.Resa;
+import com.sopra.resa.model.Ville;
 import com.sopra.resa.service.ServiceClient;
 
 @RunWith(SpringJUnit4ClassRunner.class) // necessite spring-test dans pom.xml
@@ -22,66 +18,9 @@ public class ResaTest {
 	private ServiceClient serviceClient; // à tester
 
 	@Test
-	public void testRechercherClient() {
-		Clientspring c = serviceClient.rechercherClient(1L);
-		Assert.assertTrue(c.getIdClient() == 1L);
-		System.out.println(c);
+	public void testRechercherVille() {
+		Ville ville = serviceClient.rechercherVille(1L);
+		Assert.assertTrue(ville.getId() == 1L);
+		System.out.println(ville);
 	}
-
-	@Test
-	public void testRechercherClientAvecResa() {
-		Clientspring c = serviceClient.rechercherClientAvecResa(1L);
-		Assert.assertTrue(c.getIdClient() == 1L);
-		System.out.println(c);
-		for (Resa r : c.getListeResa()) {
-			System.out.println("\t" + r);
-		}
-	}
-
-	@Test
-	public void testRechercherClientByName() {
-		List<Clientspring> listeCli = serviceClient.findClientByName("Therieur");
-		Assert.assertTrue(listeCli.size() > 0);
-	}
-
-	@Test
-	public void testValidInsertClientWithLogin() {
-		Clientspring nouveauClient = new Clientspring(null, "nomXx", "prenomYy");
-		LoginSpring nouveauLogin = new LoginSpring(null, "usernameXx", "passwordYy");
-		Clientspring savedClientWithSavedLogin = serviceClient.insertClientWithLogin(nouveauClient, nouveauLogin);
-		Assert.assertNotNull(savedClientWithSavedLogin);
-		Long nouvelId = savedClientWithSavedLogin.getIdClient();
-		Clientspring client = serviceClient.rechercherClient(nouvelId);
-		Assert.assertEquals(client.getLogin().getUsername(), "usernameXx");
-		Assert.assertEquals(client.getLogin().getPassword(), "passwordYy");
-		// affichage temporaire ou exceptionnel (tp):
-		System.out.println("nouveau client: " + client + " avec login: " + client.getLogin());
-		// suppression à la fin pour pouvoir relancer le test plusieurs fois:
-		serviceClient.supprimerClientWithLogin(nouvelId);
-	}
-
-	@SuppressWarnings("unused")
-	@Test
-	public void testInValidInsertClientWithLogin() {
-		Clientspring nouveauClient = new Clientspring(null, "nomXx", "prenomYy");
-		LoginSpring nouveauLogin = new LoginSpring(null, "alex-therieur", "passwordYy"); // invalide car username dejà en base et
-																				// devant être unique
-		try {
-			Clientspring savedClientWithSavedLogin = serviceClient.insertClientWithLogin(nouveauClient, nouveauLogin);
-			Assert.fail("une exception aurait du remonter");
-		} catch (Exception ex) {
-			System.err.println("exception normale:" + ex.getMessage());
-		}
-
-		Long nouvelId = nouveauClient.getIdClient(); // savedClientWithSavedLogin.getIdClient();
-		Clientspring client = serviceClient.rechercherClient(nouvelId);
-		if (client != null) {
-			// affichage temporaire ou exceptionnel (tp):
-			System.out.println("nouveau client: " + client + " avec login: " + client.getLogin());
-			// suppression à la fin pour pouvoir relancer le test plusieurs fois:
-			serviceClient.supprimerClientWithLogin(nouvelId);
-			Assert.fail("comportement non transactionnel (action partielle enregistree en base)");
-		}
-	}
-
 }

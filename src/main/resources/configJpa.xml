@@ -10,7 +10,7 @@ http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="org.postgresql.Driver" />
 		<property name="url"
-			value="jdbc:postgresql://localhost:5432/customers" />
+			value="jdbc:postgresql://localhost:5432/compagnieAerienne" />
 		<property name="username" value="postgres" />
 		<property name="password" value="postgres" /> <!-- "postgres" ou "root" ou ... -->
 	</bean>
@@ -23,7 +23,7 @@ http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
 				<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
-				<!-- <property name="hibernate.hbm2ddl.auto" value="update" /> -->
+				 
 				<property name="showSql" value="false" />
 				<!-- <property name="generateDdl" value="true" /> -->
 			</bean>

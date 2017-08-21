@@ -1,6 +1,6 @@
 package com.sopra.resa.dao;
 
-import com.sopra.resa.model.LoginSpring;
+import com.sopra.resa.model.Login;
 
 /*
  * DaoLogin = Data Access Object
@@ -8,8 +8,8 @@ import com.sopra.resa.model.LoginSpring;
  *   avec methodes CRUD
  *   et throws RuntimeException implicites
  */
-public interface DaoLogin extends DaoGeneric<LoginSpring,Long>{
-    
-    public LoginSpring findLoginByUsername(String username);
-	
-}    
+public interface DaoLogin extends DaoGeneric<Login, Long> {
+
+	public Login findLoginByUsername(String username);
+
+}
